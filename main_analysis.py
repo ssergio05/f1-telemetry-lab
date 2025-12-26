@@ -1,6 +1,6 @@
 """
 F1 Qualifying Telemetry Analysis
-Author: Sergio
+Author: Sergio Gonzalez
 Description: This script compares the fastest laps of two drivers during a 
              qualifying session. It generates a 5-panel chart showing time gap, 
              speed, throttle, brake, and gear usage, synchronized by distance.

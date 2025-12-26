@@ -1,6 +1,6 @@
 """
 F1 Telemetry Lab - Utility Module
-Author: Sergio Gonzalez Carazo
+Author: Sergio Gonzalez
 Description: Helper functions for session loading, telemetry interpolation, 
              and sector timing analysis using FastF1.
 """
