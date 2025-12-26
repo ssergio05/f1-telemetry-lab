@@ -1,0 +1,18 @@
+# --- F1 Data Cache ---
+f1_cache/
+
+# --- Python System Files ---
+# Esto ignora CUALQUIER carpeta __pycache__ en cualquier subdirectorio
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# --- IDE Settings ---
+# Ignora las configuraciones locales de tu VS Code
+.vscode/
+
+# --- Virtual Environments ---
+# Por si decides usar uno en el futuro
+venv/
+env/
+.env
