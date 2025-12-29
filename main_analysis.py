@@ -25,7 +25,7 @@ plotting.setup_mpl(mpl_timedelta_support=True, color_scheme='fastf1')
 fig, ax = plt.subplots(5, 1, figsize=(15, 12), sharex=True)
 
 # --- 3. Data Processing ---
-drivers = ['NOR', 'RUS']
+drivers = ['NOR', 'VER']
 
 # Select the fastest lap for each driver
 lap1 = session.laps.pick_drivers(drivers[0]).pick_fastest()

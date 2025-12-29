@@ -1,53 +1,78 @@
 # 🏎️ My F1 Telemetry & Data Lab
 
-I built this project to dive deep into **Formula 1 data analysis**. As a Computer Science student and an F1 fan, I wanted to go beyond what the TV broadcast shows and understand how drivers like Norris and Verstappen manage their pace and tires.
+I built this project to dive deep into **Formula 1 data analysis**. As a Computer Science student and an F1 fan, I wanted to go beyond what the TV broadcast shows and understand how drivers manage their pace, tires, and racing lines through data-driven insights.
 
 ---
 
-## 🛠️ What I’ve built so far
+## 🚀 Analysis Suite & Features
 
-* **Telemetry Visualizer**: A 5-panel dashboard comparing Speed, Throttle, Brake, and Gears.
-* **The "Gap" Challenge**: I developed a custom delta calculator using **linear interpolation (NumPy)** to solve data synchronization issues in tight tracks like Monaco.
-* **Sector Breakdown**: A script that extracts timing data to see exactly where a car is gaining or losing time (S1, S2, S3).
-* **Tyre Management**: A race pace analyzer that filters specific stints to visualize thermal degradation.
+### 🏁 Core Timing & Strategy (v1)
+* **Sector Breakdown**: Extracts timing data to see exactly where a car is gaining or losing time across Sector 1, 2, and 3.
+* **Tyre Management**: A race pace analyzer that filters specific stints to visualize thermal degradation and lap time consistency.
+* **The "Gap" Challenge**: A custom delta calculator developed to solve data synchronization issues in tight tracks like Monaco.
 
----
-
-## 🧠 Key Problems I Solved
-
-1. **Data Inconsistency**: F1 sensors don't always ping at the same time. I had to implement a common distance grid to make the "Time Gap" line accurate across the whole lap.
-2. **Telemetry Noise**: Cleaning up race data to remove pit stops and Safety Car laps using `pick_quicklaps` to get a clear view of tire wear.
-3. **Circuit Mapping**: Instead of hardcoding corners, I automated the process using the **FastF1 API** to fetch corner coordinates for any track.
+### 📊 Professional Telemetry (v2)
+* **Master Telemetry Dashboard**: A 5-panel synchronized visualizer that aligns **Time Gap, Speed, Throttle, Brake, and Gear selection** with geographical corner markers (T1, T2, etc.).
+* **Track-Speed Heatmaps**: Projects telemetry onto circuit coordinates (X, Y) with speed gradients to identify apex speeds and braking zones.
+* **Speed Delta Maps**: Uses divergent colormaps to highlight exactly where one driver is faster (Red) vs. their rival (Blue) along the physical track layout.
 
 ---
 
-## 📊 Sample Results
+## 🧠 Technical Problems I Solved
 
-### Qualifying Analysis (Barcelona)
-In this plot, you can clearly see how the McLaren (Norris) manages to carry more speed through the technical sector 2 compared to the Mercedes (Russell).
+1. **Data Inconsistency & Sync**: F1 sensors don't always ping at the same time. I implemented **Linear Interpolation (NumPy)** to create a common distance grid, allowing for a 1:1 "apples to apples" comparison.
+2. **Telemetry Noise**: Implemented logic to clean up race data, removing pit stops and non-representative laps (Safety Car, Out laps) using `pick_quicklaps`.
+3. **Identity & Performance**: 
+    * Automated official **Team Color** extraction via API for professional branding.
+    * Implemented an automatic **Caching System** to handle massive telemetry datasets and reduce script execution time.
+4. **Dynamic Circuit Mapping**: Automated corner coordinate fetching and labeling (T1, T2...) using the FastF1 API to ensure the lab works for any Grand Prix on the calendar.
+
+---
+
+## 📊 Sample Results: The Battle for Spain 2024 (VER vs NOR)
+
+To demonstrate the lab's capabilities, I analyzed the fight for Pole Position between **Max Verstappen** and **Lando Norris**.
+
+### 1. Full Lap Master Dashboard
+The ultimate overview. It synchronizes the **Time Gap** with every driver input and geolocates them using turn markers (T1-T14) across the entire lap.
 
 <p align="center">
-  <img src="plots/2024_Spain_Q_NOR_vs_RUS_telemetry.png" alt="Qualifying Telemetry Barcelona" width="50%"/>
+  <img src="plots/2024_Spain_Q_NOR_vs_VER_telemetry.png" alt="Full Lap Master Dashboard" width="75%"/>
 </p>
 
-### Race Pace & Degradation
-Comparing the first stint between Norris and Verstappen. It shows how Verstappen’s Red Bull keeps a flatter pace line while Norris experiences more "spikes" in lap times during the 2024 Spanish GP.
+### 2. Deep Dive: Technical Sector Analysis (Driver Inputs)
+By zooming into the technical middle sector (1500m - 3500m), we can see the "micro" differences. This view highlights exactly how Norris (Orange) applies the throttle earlier than Verstappen (Blue) on corner exits.
 
 <p align="center">
-  <img src="plots/2024_Spain_R_SOFT_deg_NOR_VER.png" alt="Tyre Degradation Analysis" width="50%"/>
+  <img src="plots/2024_Spain_Q_inputs_zoom_VER_NOR.png" alt="Driver Inputs Zoom" width="75%"/>
+</p>
+
+### 3. Speed Delta & Track Performance
+A divergent map showing the trade-off between straight-line efficiency and mid-corner speed.
+
+<p align="center">
+  <img src="plots/2024_Spain_Q_VER_vs_NOR_delta_map.png" alt="Speed Delta Map Barcelona" width="48%"/>
+  <img src="plots/2024_Spain_Q_NOR_heatmap.png" alt="Track Speed Heatmap" width="48%"/>
+</p>
+
+### 4. Race Pace & Tyre Degradation
+Analysis of the first stint showing the consistency of both drivers and the "performance cliff".
+
+<p align="center">
+  <img src="plots/2024_Spain_R_SOFT_deg_NOR_VER.png" alt="Tyre Degradation Analysis" width="75%"/>
 </p>
 
 ---
 
-## 📈 Future Roadmap
-
-* **DRS Efficiency**: Measuring the exact speed gain and time delta during DRS-enabled laps.
-* **Weather Impact Analysis**: Correlation between track temperature and tire degradation slopes.
-* **3D Track Mapping**: Using GPS coordinates to build a 3D visualization of the circuit with speed-based heatmaps.
-
----
-
-## 💻 My Stack
+## 💻 Tech Stack
 
 * **Language**: Python 3.12
-* **Libraries**: `FastF1`, `Pandas`, `NumPy`, `Matplotlib`
+* **Core Libraries**: `FastF1`, `Pandas`, `NumPy`, `Matplotlib`
+
+---
+
+## 🚀 How to Run
+
+1. **Clone the repository**:
+   ```bash
+   git clone [https://github.com/tu-usuario/f1-telemetry-lab.git](https://github.com/tu-usuario/f1-telemetry-lab.git)
